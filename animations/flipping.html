@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Flipping (with wiggles)</title>
+<style>
+
+/* I used https://davidwalsh.name/css-flip as a basis for this... */
+
+@-webkit-keyframes flip-wiggle {
+  from {
+    transform: rotateY(0deg);
+  }
+  33% {
+    transform: rotateY(220deg);
+  }
+  66% {
+    transform: rotateY(165deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+@-webkit-keyframes flip-wiggle-out {
+  from {
+    transform: rotateY(180deg);
+  }
+  33% {
+    transform: rotateY(-30deg);
+  }
+  66% {
+    transform: rotateY(15deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+.flip-container {
+	perspective: 1000px;
+  border:green 1px solid;
+}
+
+.flip-container, .front, .back {
+	width: 200px;
+	height: 200px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 2s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  background-color: rgba(255, 46, 46, 0.774);
+  border: black dotted 2px;
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+  background-color:rgba(145, 255, 0, 0.753);
+  border: blue 1px dashed;
+}
+</style>
+</head>
+<body>
+  <div class="flip-container">
+    <div class="flipper">
+      <div class="front">
+        front
+      </div>
+      <div class="back">
+        back
+      </div>
+    </div>
+  </div>
+  <script>
+    let flipper = document.querySelector('.flipper');
+    flipper.onmouseover = () => {
+      console.log(flipper.style);
+      flipper.style['-webkit-animation'] = 'flip-wiggle 1s both ease-in';
+    }
+    flipper.onmouseout = () => {
+      flipper.style['-webkit-animation'] = 'flip-wiggle-out 1s both ease-in';
+    }
+  </script>
+</body>
+</html>
