@@ -43,12 +43,8 @@
 	height: 200px;
 }
 
-/* flip speed goes here */
 .flipper {
-	transition: 2s;
 	transform-style: preserve-3d;
-
-	position: relative;
 }
 
 /* hide back of pane during swap */
@@ -63,14 +59,12 @@
 /* front pane, placed above back */
 .front {
   background-color: rgba(255, 46, 46, 0.774);
-  border: black dotted 2px;
 }
 
 /* back, initially hidden pane */
 .back {
   transform: rotateY(180deg);
   background-color:rgba(145, 255, 0, 0.753);
-  border: blue 1px dashed;
 }
 </style>
 </head>
@@ -86,14 +80,11 @@
     </div>
   </div>
   <script>
-    let flipper = document.querySelector('.flipper');
-    flipper.onmouseover = () => {
-      console.log(flipper.style);
-      flipper.style['-webkit-animation'] = 'flip-wiggle 1s both ease-in';
-    }
-    flipper.onmouseout = () => {
-      flipper.style['-webkit-animation'] = 'flip-wiggle-out 1s both ease-in';
-    }
+    let flipcontainer = document.querySelector('.flip\\-container');
+    let flipper = flipcontainer.querySelector('.flipper');
+    const toggleFlipper = (animation) => flipper.style['-webkit-animation'] = animation;
+    flipcontainer.onmouseover = () => toggleFlipper('flip-wiggle 1s both ease-in');
+    flipcontainer.onmouseout = () => toggleFlipper('flip-wiggle-out 1s both ease-in');
   </script>
 </body>
 </html>
