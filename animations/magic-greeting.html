@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Magic Greeting</title>
+<style>
+
+@-webkit-keyframes linedraw {
+  50% {
+    width: 300px;
+    height: 6px;
+  }
+  90% {
+    height: 300px;
+    width: 300px
+  }
+  to {
+    height: 300px;
+    width: 300px;
+ }
+}
+
+@-webkit-keyframes showmessage {
+  to {
+    opacity: 1;
+  }
+}
+.animation-container-big .animation .point {
+  width: 6px;
+  height: 6px;
+  background: black;
+  transition: width 1s ease;
+  -webkit-animation: linedraw 2s both;
+  position: relative;
+}
+
+.animation-container-big .animation .point .message {
+  font-family: monospace;
+  font-size: 2em;
+  overflow: hidden;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-animation: showmessage 1s ease 2s both;
+}
+
+.animation-container-big, .animation-container-big .animation {
+  width: 500px;
+  height: 500px;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="animation-container-big">
+    <div class="animation">
+      <div class="point">
+        <div class="message">
+          Hi!
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
